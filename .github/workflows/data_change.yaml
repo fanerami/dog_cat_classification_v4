@@ -35,6 +35,8 @@ jobs:
             - name: track DVC pipline github
               run: |
                   dvc add data
+                  git config --global user.email "r.faneva.mahery@gmail.com"
+                  git config --global user.name "fanerami"
                   git add dvc.lock
                   git commit -m "track dvc.lock"
                   git push
