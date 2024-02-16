@@ -78,9 +78,9 @@ stages:
       size: 695
     - path: data/test
       hash: md5
-      md5: a2802b3d477d3807792f3e0abe7392bd.dir
-      size: 689586
-      nfiles: 30
+      md5: 79298ccba08b6e0508a031b822d24bc2.dir
+      size: 1204719
+      nfiles: 50
     - path: src/dogCatClassification/pipeline/step_4_evaluation.py
       hash: md5
       md5: f54b280b8e2a45f84369e1ce100e6741
@@ -95,5 +95,5 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: a3abc19897717974860c5d1f90dea3d3
+      md5: eeb56c0cda18fa994dc51d52cfccfe06
       size: 69
