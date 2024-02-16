@@ -19,7 +19,7 @@ stages:
         - 224
         - 3
         INCLUDE_TOP: false
-        LEARNING_RATE: 0.05
+        LEARNING_RATE: 0.01
         METRICS:
         - accuracy
         OUTPTUT_ACTIVATION_FUNCTION: softmax
@@ -27,7 +27,7 @@ stages:
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 520c4937f42a099b53b5ea867d503ccd.dir
+      md5: e746f73ee187578fb69a50179a909330.dir
       size: 118054560
       nfiles: 2
   training:
@@ -35,7 +35,7 @@ stages:
     deps:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 520c4937f42a099b53b5ea867d503ccd.dir
+      md5: e746f73ee187578fb69a50179a909330.dir
       size: 118054560
       nfiles: 2
     - path: config/config.yaml
@@ -63,14 +63,14 @@ stages:
     outs:
     - path: artifacts/training/model.h5
       hash: md5
-      md5: ad86d49581a29a9ce954e77a32e32c5e
+      md5: 8a35174beba139339616060a04c71feb
       size: 59337520
   evaluation:
     cmd: python src/dogCatClassification/pipeline/step_4_evaluation.py
     deps:
     - path: artifacts/training/model.h5
       hash: md5
-      md5: ad86d49581a29a9ce954e77a32e32c5e
+      md5: 8a35174beba139339616060a04c71feb
       size: 59337520
     - path: config/config.yaml
       hash: md5
@@ -78,9 +78,9 @@ stages:
       size: 695
     - path: data/test
       hash: md5
-      md5: 4c6b3063bf3e3ae947feb3b1bf767972.dir
-      size: 737256
-      nfiles: 32
+      md5: a2802b3d477d3807792f3e0abe7392bd.dir
+      size: 689586
+      nfiles: 30
     - path: src/dogCatClassification/pipeline/step_4_evaluation.py
       hash: md5
       md5: f54b280b8e2a45f84369e1ce100e6741
@@ -95,5 +95,5 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: e24969ff7cde8c98a410ac9aa2b65c69
-      size: 57
+      md5: 9365b8483ca8226ab394494996509978
+      size: 70
