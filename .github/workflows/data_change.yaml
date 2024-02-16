@@ -7,6 +7,7 @@ on:
     paths:
       - 'data.dvc'
       - 'params.yaml'
+      - 'dvc.yaml'
   pull_request:
     branches:
       - dev
