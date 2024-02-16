@@ -7,7 +7,6 @@ on:
     paths:
       - 'data.dvc'
       - 'params.yaml'
-      - '.gihub/workflow/data_change.yaml'
   pull_request:
     branches:
       - dev
