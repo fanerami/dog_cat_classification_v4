@@ -32,5 +32,5 @@ jobs:
             - name: Launch DVC pipeline
               run: dvc repro
 
-            - name: show metrics
+            - name: show metrics comparison
               run: dvc metrics diff
