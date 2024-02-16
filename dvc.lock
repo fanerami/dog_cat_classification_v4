@@ -19,7 +19,7 @@ stages:
         - 224
         - 3
         INCLUDE_TOP: false
-        LEARNING_RATE: 0.01
+        LEARNING_RATE: 0.05
         METRICS:
         - accuracy
         OUTPTUT_ACTIVATION_FUNCTION: softmax
@@ -27,7 +27,7 @@ stages:
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: e746f73ee187578fb69a50179a909330.dir
+      md5: 520c4937f42a099b53b5ea867d503ccd.dir
       size: 118054560
       nfiles: 2
   training:
@@ -35,7 +35,7 @@ stages:
     deps:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: e746f73ee187578fb69a50179a909330.dir
+      md5: 520c4937f42a099b53b5ea867d503ccd.dir
       size: 118054560
       nfiles: 2
     - path: config/config.yaml
@@ -44,9 +44,9 @@ stages:
       size: 695
     - path: data/
       hash: md5
-      md5: bd72410b3f673cd574c5d9f06957d86a.dir
-      size: 28404182
-      nfiles: 1252
+      md5: 95b435e2c2ccb0ffde55a24aa419cfc7.dir
+      size: 4232334
+      nfiles: 185
     - path: src/dogCatClassification/pipeline/step_3_training.py
       hash: md5
       md5: 077f6ab06211194cdfb0a20c83d5586a
@@ -63,14 +63,14 @@ stages:
     outs:
     - path: artifacts/training/model.h5
       hash: md5
-      md5: 20b6c7090d111be6634f77dc9bb14631
+      md5: 07b51da2ff446c332ccb9a61fcf03380
       size: 59337520
   evaluation:
     cmd: python src/dogCatClassification/pipeline/step_4_evaluation.py
     deps:
     - path: artifacts/training/model.h5
       hash: md5
-      md5: 20b6c7090d111be6634f77dc9bb14631
+      md5: 07b51da2ff446c332ccb9a61fcf03380
       size: 59337520
     - path: config/config.yaml
       hash: md5
@@ -78,9 +78,9 @@ stages:
       size: 695
     - path: data/
       hash: md5
-      md5: bd72410b3f673cd574c5d9f06957d86a.dir
-      size: 28404182
-      nfiles: 1252
+      md5: 95b435e2c2ccb0ffde55a24aa419cfc7.dir
+      size: 4232334
+      nfiles: 185
     - path: src/dogCatClassification/pipeline/step_4_evaluation.py
       hash: md5
       md5: f54b280b8e2a45f84369e1ce100e6741
@@ -95,7 +95,7 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: fe779e95db10ef128810b0a16c898fd2
+      md5: 8e390dcb7f21472e49d03c922c523e0d
       size: 55
   data_ingestion:
     cmd: dvc push
