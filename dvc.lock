@@ -1,0 +1,99 @@
+schema: '2.0'
+stages:
+  prepare_base_model:
+    cmd: python src/dogCatClassification/pipeline/step_2_prepare_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: c548edee4f2174effbf4553df9c7fb3b
+      size: 695
+    - path: src/dogCatClassification/pipeline/step_2_prepare_base_model.py
+      hash: md5
+      md5: af81641ff001c2d9bb857b27cb84aa7e
+      size: 921
+    params:
+      params.yaml:
+        CLASSES: 2
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+        INCLUDE_TOP: false
+        LEARNING_RATE: 0.01
+        METRICS:
+        - accuracy
+        OUTPTUT_ACTIVATION_FUNCTION: softmax
+        WEIGHTS: imagenet
+    outs:
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: e746f73ee187578fb69a50179a909330.dir
+      size: 118054560
+      nfiles: 2
+  training:
+    cmd: python src/dogCatClassification/pipeline/step_3_training.py
+    deps:
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: e746f73ee187578fb69a50179a909330.dir
+      size: 118054560
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: c548edee4f2174effbf4553df9c7fb3b
+      size: 695
+    - path: data/train
+      hash: md5
+      md5: 7a640016de5515dfabf92748d466477a.dir
+      size: 45821449
+      nfiles: 2008
+    - path: src/dogCatClassification/pipeline/step_3_training.py
+      hash: md5
+      md5: 077f6ab06211194cdfb0a20c83d5586a
+      size: 910
+    params:
+      params.yaml:
+        AUGMENTATION: false
+        BATCH_SIZE: 16
+        EPOCHS: 1
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: 8a35174beba139339616060a04c71feb
+      size: 59337520
+  evaluation:
+    cmd: python src/dogCatClassification/pipeline/step_4_evaluation.py
+    deps:
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: 8a35174beba139339616060a04c71feb
+      size: 59337520
+    - path: config/config.yaml
+      hash: md5
+      md5: c548edee4f2174effbf4553df9c7fb3b
+      size: 695
+    - path: data/test
+      hash: md5
+      md5: 4c6b3063bf3e3ae947feb3b1bf767972.dir
+      size: 737256
+      nfiles: 32
+    - path: src/dogCatClassification/pipeline/step_4_evaluation.py
+      hash: md5
+      md5: f54b280b8e2a45f84369e1ce100e6741
+      size: 882
+    params:
+      params.yaml:
+        BATCH_SIZE: 16
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 0f83a0ed8a3ae302441cd4616dc3cd16
+      size: 53
