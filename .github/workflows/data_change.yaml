@@ -33,11 +33,12 @@ jobs:
               run: dvc repro
 
             - name: track DVC pipline github
-              run: dvc add data
-                  dvc push
-                  git add dvc.lock
-                  git commint -m "track dvc.lock"
-                  git push
+              run: |
+                  dvc add data \
+                  dvc push \
+                  git add dvc.lock \
+                  git commint -m "track dvc.lock" \
+                  git push \
 
             - name: show metrics comparison
               run: dvc metrics diff
