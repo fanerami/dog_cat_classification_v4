@@ -34,11 +34,11 @@ jobs:
 
             - name: track DVC pipline github
               run: |
-                  dvc add data \
-                  dvc push \
-                  git add dvc.lock \
-                  git commit -m "track dvc.lock" \
-                  git push \
+                  dvc add data
+                  dvc push
+                  git add dvc.lock
+                  git commit -m "track dvc.lock"
+                  git push
 
             - name: show metrics comparison
               run: dvc metrics diff
