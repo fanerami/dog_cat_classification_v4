@@ -8,6 +8,3 @@ WEIGHTS: imagenet
 LEARNING_RATE: 0.01
 OUTPTUT_ACTIVATION_FUNCTION: softmax
 METRICS: ["accuracy"]
-
-
-
