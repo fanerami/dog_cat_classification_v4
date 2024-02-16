@@ -1,4 +1,9 @@
 stages:
+  data_ingestion:
+    cmd: dvc push
+    deps:
+      -  data/
+
   prepare_base_model:
     cmd: python src/dogCatClassification/pipeline/step_2_prepare_base_model.py
     deps:

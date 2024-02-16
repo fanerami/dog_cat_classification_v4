@@ -97,3 +97,11 @@ stages:
       hash: md5
       md5: fad53192d5d3cdf04019849b0b22b1bd
       size: 70
+  data_ingestion:
+    cmd: dvc push
+    deps:
+    - path: data/
+      hash: md5
+      md5: bd72410b3f673cd574c5d9f06957d86a.dir
+      size: 28404182
+      nfiles: 1252
