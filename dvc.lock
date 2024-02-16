@@ -44,9 +44,9 @@ stages:
       size: 695
     - path: data/train
       hash: md5
-      md5: 7a640016de5515dfabf92748d466477a.dir
-      size: 45821449
-      nfiles: 2008
+      md5: 07b9764c5487655455612c2909f9852e.dir
+      size: 50539577
+      nfiles: 2208
     - path: src/dogCatClassification/pipeline/step_3_training.py
       hash: md5
       md5: 077f6ab06211194cdfb0a20c83d5586a
