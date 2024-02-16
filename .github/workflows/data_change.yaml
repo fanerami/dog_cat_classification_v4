@@ -6,6 +6,7 @@ on:
       - dev
     paths:
       - data.dvc
+      - params.yaml
   pull_request:
     branches:
       - dev
@@ -25,4 +26,10 @@ jobs:
               run: dvc remote add -f origin https://dagshub.com/fanerami/dog_cat_classification_v4.dvc
 
             - name: Pull latest data with DVC
-              run: dvc pull
+              run: python src/dogCatClassification/pipeline/step_1_data_ingestion.py
+
+            - name: Launch DVC pipeline
+              run: dvc repro
+
+            - name: show metrics
+              run: dvc metrics diff > report.md
