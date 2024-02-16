@@ -33,4 +33,4 @@ jobs:
               run: dvc repro
 
             - name: show metrics comparison
-              run: dvc metrics diff
+              run: dvc metrics diff HEAD^
