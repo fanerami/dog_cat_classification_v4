@@ -38,7 +38,12 @@ jobs:
                   git config --global user.name "fanerami"
                   git add dvc.lock
                   git commit -m "track dvc.lock"
-                  git push
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  branch: ${{ github.ref }}
+
 
             - name: show metrics comparison
               run: dvc metrics diff
